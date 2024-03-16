@@ -26,6 +26,6 @@ async def root():
     return {"message": "Hello World"}
 
 @app.get("/patients/", response_model=List[api_models.Patient])
-def get_patients(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
-    patients = crud.get_patients(db, skip=skip, limit=limit)
+def get_patients(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)): 
+    patients = crud.Patient().get_all(db, skip=skip, limit=limit)
     return patients
